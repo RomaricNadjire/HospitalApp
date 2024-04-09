@@ -1,16 +1,15 @@
 /* eslint-disable prettier/prettier */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, TextInput, StyleSheet, Button } from 'react-native';
-import { COLORS } from '../../outils/constantes';
 
 const SearchBar = ({ onSearch, dataToSearch }) => {
 
   const [searchText, setSearchText] = useState('');
 
-  const handleSearch = () => {
+  useEffect(() => {
     const filteredData = dataToSearch.filter(item => item.name.toLowerCase().includes(searchText.toLowerCase()));
     onSearch(filteredData);
-  };
+  }, [searchText, dataToSearch, onSearch]);
 
   return (
     <View style={styles.container}>
@@ -20,19 +19,16 @@ const SearchBar = ({ onSearch, dataToSearch }) => {
         placeholderTextColor={'gray'}
         value={searchText}
         onChangeText={setSearchText}
-        onChange={handleSearch}
-        onEndEditing={handleSearch}
-        onSubmitEditing={handleSearch}
       />
-      <View style={{width: '30%', height: '100%', borderTopRightRadius: 15, borderBottomRightRadius: 15, overflow: 'hidden', backgroundColor: COLORS.main}}>
+      {/* <View style={{width: '30%', height: '100%', borderTopRightRadius: 15, borderBottomRightRadius: 15, overflow: 'hidden', backgroundColor: COLORS.main}}>
         <Button
           title="Search"
           color={'#00000001'}
           accessibilityLabel="Learn more about this purple button"
-          onPress={handleSearch}
+          onPress={() => {}}
           style={{flex: 1, padding: 10}}
         />
-      </View>
+      </View> */}
     </View>
   );
 };
@@ -53,9 +49,8 @@ const styles = StyleSheet.create({
     color: '#000',
     padding: 8,
     height: '100%',
-    width: '70%',
-    borderTopLeftRadius: 15,
-    borderBottomLeftRadius: 15,
+    width: '100%',
+    borderRadius: 15,
   },
 });
 

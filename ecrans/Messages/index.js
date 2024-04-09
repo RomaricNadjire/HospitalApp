@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
-import { View, Text, FlatList } from 'react-native'
-import React, { useState } from 'react'
-import { FackChats } from '../../FackData/fackChat'
-import MessagesList from '../../composantes/MessageList'
-import SearchBar from './SearchBar'
+import { View, Text, FlatList } from 'react-native';
+import React, { useState } from 'react';
+import { FackChats } from '../../FackData/fackChat';
+import MessagesList from '../../composantes/MessageList';
+import SearchBar from './SearchBar';
 
 const Messages = () => {
   const [data, setData] = useState(FackChats);
@@ -13,7 +13,7 @@ const Messages = () => {
       <SearchBar dataToSearch={FackChats} onSearch={setData}/>
       <FlatList data={data} keyExtractor={item => item.id}
       renderItem={({item})=>{
-        return (<MessagesList item={item}/>)
+        return (<MessagesList item={item}/>);
       }}/>
     </>
   )
