@@ -10,7 +10,7 @@ const BottomTabs = () => {
      const Tab = createMaterialBottomTabNavigator();
      return (
          <Tab.Navigator
-           initialRouteName="Dashboard"
+           initialRouteName="Message"
            screenOptions={{
              tabBarActiveTintColor: '#e91e63',
            }}

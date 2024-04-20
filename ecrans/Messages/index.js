@@ -5,7 +5,7 @@ import { FackChats } from '../../FackData/fackChat';
 import MessagesList from '../../composantes/MessageList';
 import SearchBar from './SearchBar';
 
-const Messages = () => {
+const Messages = ({navigation}) => {
   const [data, setData] = useState(FackChats);
 
   return (
@@ -13,7 +13,7 @@ const Messages = () => {
       <SearchBar dataToSearch={FackChats} onSearch={setData}/>
       <FlatList data={data} keyExtractor={item => item.id}
       renderItem={({item})=>{
-        return (<MessagesList item={item}/>);
+        return (<MessagesList item={item} navigation={navigation}/>);
       }}/>
     </>
   )
